@@ -29,6 +29,7 @@ class BootScriptsController < ApplicationController
   # POST /boot_scripts.json
   def create
     @boot_script = BootScript.new(boot_script_params)
+    @boot_script.user = current_user
 
     respond_to do |format|
       if @boot_script.save
