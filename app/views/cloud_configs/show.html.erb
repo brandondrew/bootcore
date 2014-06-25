@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cloud_config.user %>
+</p>
+
+<p>
+  <strong>Accessibility:</strong>
+  <%= @cloud_config.accessibility %>
+</p>
+
+<%= link_to 'Edit', edit_cloud_config_path(@cloud_config) %> |
+<%= link_to 'Back', cloud_configs_path %>
