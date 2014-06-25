@@ -1,0 +1,14 @@
+<%= simple_form_for(@boot_script) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :file_name %>
+    <%= f.input :body %>
+    <%= f.association :user %>
+    <%= f.input :accessibility %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Listing boot_scripts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>Body</th>
+      <th>User</th>
+      <th>Accessibility</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boot_scripts.each do |boot_script| %>
+      <tr>
+        <td><%= boot_script.file_name %></td>
+        <td><%= boot_script.body %></td>
+        <td><%= boot_script.user %></td>
+        <td><%= boot_script.accessibility %></td>
+        <td><%= link_to 'Show', boot_script %></td>
+        <td><%= link_to 'Edit', edit_boot_script_path(boot_script) %></td>
+        <td><%= link_to 'Destroy', boot_script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Boot script', new_boot_script_path %>

@@ -1,0 +1,2 @@
+module BootScriptsHelper
+end
