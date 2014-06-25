@@ -1,6 +1,5 @@
-<h1>Editing cloud_config</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @cloud_config %> |
-<%= link_to 'Back', cloud_configs_path %>
+<%- model_class = CloudConfig -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => CloudConfig %></h1>
+</div>
+<%= render :partial => 'form' %>

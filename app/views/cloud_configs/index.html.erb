@@ -1,27 +1,36 @@
-<h1>Listing cloud_configs</h1>
-
-<table>
+<%- model_class = CloudConfig -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => CloudConfig %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Accessibility</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:accessibility) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @cloud_configs.each do |cloud_config| %>
       <tr>
-        <td><%= cloud_config.user %></td>
+        <td><%= cloud_config.id %></td>
         <td><%= cloud_config.accessibility %></td>
-        <td><%= link_to 'Show', cloud_config %></td>
-        <td><%= link_to 'Edit', edit_cloud_config_path(cloud_config) %></td>
-        <td><%= link_to 'Destroy', cloud_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l cloud_config.created_at, format: :long %></td>
+        <td>
+          <%= link_to cloud_config_path(cloud_config), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to cloud_config_path(cloud_config), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Cloud config', new_cloud_config_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_cloud_config_path,
+            :class => 'btn btn-primary' %>
