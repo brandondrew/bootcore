@@ -1,31 +1,40 @@
-<h1>Listing boot_scripts</h1>
-
-<table>
+<%- model_class = BootScript -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => BootScript %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>File name</th>
-      <th>Body</th>
-      <th>User</th>
-      <th>Accessibility</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:file_name) %></th>
+      <th><%= model_class.human_attribute_name(:body) %></th>
+      <th><%= model_class.human_attribute_name(:accessibility) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @boot_scripts.each do |boot_script| %>
       <tr>
+        <td><%= boot_script.id %></td>
         <td><%= boot_script.file_name %></td>
         <td><%= boot_script.body %></td>
-        <td><%= boot_script.user %></td>
         <td><%= boot_script.accessibility %></td>
-        <td><%= link_to 'Show', boot_script %></td>
-        <td><%= link_to 'Edit', edit_boot_script_path(boot_script) %></td>
-        <td><%= link_to 'Destroy', boot_script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l boot_script.created_at, format: :long %></td>
+        <td>
+          <%= link_to boot_script_path(boot_script), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to boot_script_path(boot_script), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Boot script', new_boot_script_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_boot_script_path,
+            :class => 'btn btn-primary' %>

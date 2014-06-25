@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = BootScript -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => BootScript %></h1>
+</div>
 
-<p>
-  <strong>File name:</strong>
-  <%= @boot_script.file_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:file_name) %></dt>
+      <dd><pre class="prettyprint"><%= @boot_script.file_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:body) %></dt>
+      <dd><pre class="prettyprint"><%= @boot_script.body %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:accessibility) %></dt>
+      <dd><pre class="prettyprint"><%= @boot_script.accessibility %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @boot_script.body %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              boot_scripts_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_boot_script_path(@boot_script), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              boot_script_path(@boot_script),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @boot_script.user %>
-</p>
-
-<p>
-  <strong>Accessibility:</strong>
-  <%= @boot_script.accessibility %>
-</p>
-
-<%= link_to 'Edit', edit_boot_script_path(@boot_script) %> |
-<%= link_to 'Back', boot_scripts_path %>
