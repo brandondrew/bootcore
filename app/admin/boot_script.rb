@@ -1,4 +1,5 @@
 ActiveAdmin.register BootScript do
+  permit_params :file_name, :body, :accessibility
 
   
   # See permitted parameters documentation:
