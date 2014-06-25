@@ -1,4 +1,8 @@
 class BootScriptsController < ApplicationController
+
+  #->Prelang (scaffolding:rails/scope_to_user)
+  before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
+
   before_action :set_boot_script, only: [:show, :edit, :update, :destroy]
 
   # GET /boot_scripts
