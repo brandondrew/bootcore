@@ -3,7 +3,7 @@ class CloudConfigsController < ApplicationController
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
-  before_action :set_cloud_config, only: [:show, :edit, :update, :destroy]
+  before_action :set_cloud_config, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /cloud_configs
   # GET /cloud_configs.json
