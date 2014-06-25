@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :cloud_configs
+  resources :cloud_configs do
+  #->Prelang (voting/acts_as_votable)
+  member do
+    get "vote"
+  end
+end
+
 
   resources :boot_scripts do
   #->Prelang (voting/acts_as_votable)
