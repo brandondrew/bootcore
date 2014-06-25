@@ -29,6 +29,7 @@ class CloudConfigsController < ApplicationController
   # POST /cloud_configs.json
   def create
     @cloud_config = CloudConfig.new(cloud_config_params)
+    @cloud_config.user = current_user
 
     respond_to do |format|
       if @cloud_config.save
