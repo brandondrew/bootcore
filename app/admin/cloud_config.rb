@@ -1,4 +1,5 @@
 ActiveAdmin.register CloudConfig do
+  permit_params :accessibility
 
   
   # See permitted parameters documentation:
